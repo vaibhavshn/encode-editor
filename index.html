@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>enCode | An Online Code Editor</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300:900" rel="stylesheet">
+  <link rel="stylesheet" href="rtf/css/global.css">
+</head>
+<body>
+
+<div id="actions">
+  <div class="action folder-action full-action" id="nFoSprite" data-action="newFolder">New Folder</div>
+  <div class="action folder-action full-action" id="nFiSprite" data-action="newFile">New File</div>
+  <div class="action folder-action root-action full-action nDeSprite" data-action="deleteFolder">Delete</div>
+  <div class="action file-action direct-action" id="nEdSprite" data-action="edit">Edit/Open</div>
+  <div class="action file-action direct-action" id="nDoSprite" data-action="download">Download</div>
+  <div class="action file-action direct-action" id="nReSprite" data-action="rename">Rename</div>
+  <div class="action file-action full-action nDeSprite" data-action="deleteFile">Delete</div>
+</div>
+
+<div id="container" class="full-height no-anim">
+
+  <div id="sidebar" class="full-height">
+
+    <h4><span class="logo">en<span class="red">Code</span></span> FileSystem</h4>
+
+    <div id="filesystem" class="root">
+      <div class="message">
+        You have no files to work on now. <br />
+        Right click here and start now!
+      </div>
+    </div>
+
+    <div id="project-actions">
+      <button class="downloadProject" data-type="zip">Download Project (ZIP)</button>
+      <button class="downloadProject" data-type="json">Download Project (JSON)</button>
+      <input type="file" id="projectFile"/>
+      <button id="loadProject">Load Project</button>
+    </div>
+
+    <!-- <div id="adv"> </div> -->
+
+  </div>
+
+  <div id="dragbar">
+    <div id="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <div id="content" class="full-height">
+
+    <div id="tabs"> <div id="maximize">[ ]</div></div>
+
+    <div id="editor">
+      <pre id="acor" name="acor">alert("Get Started Now!");</pre>
+    </div>
+
+
+    <div id="toolbar">
+
+      <div class="left">
+        <button id="downloadTB">Download</button>
+        <button id="saveTB">Save</button>
+      </div>
+
+      <div class="right">
+
+        <div class="fontParent">
+          <label class="font-label">Font Size</label>
+          <select id="fontSizer" title="Font Size"></select>
+        </div>
+
+        <div class="fontParent">
+          <label class="font-label">Theme</label>
+          <select id="themer" title="Theme">
+            <option value="xcode">XCode (Light)</option>
+            <option value="twilight">Twilight (Dark)</option>
+            <option value="solarized_light">Solarized Light</option>
+            <option value="tomorrow">Tomorrow (Light)</option>
+            <option value="solarized_dark">Solarized Dark</option>
+            <option value="cobalt">Cobalt (Dark)</option>
+          </select>
+        </div>
+
+        <div class="fontParent">
+          <label class="font-label">Mode</label>
+          <select id="lang-mode">
+            <option value="abap">ABAP</option><option value="abc">ABC</option><option value="actionscript">ActionScript</option><option value="ada">ADA</option><option value="apache_conf">Apache Conf</option><option value="asciidoc">AsciiDoc</option><option value="assembly_x86">Assembly x86</option><option value="autohotkey">AutoHotKey</option><option value="batchfile">BatchFile</option><option value="bro">Bro</option><option value="c_cpp">C and C++</option><option value="c9search">C9Search</option><option value="cirru">Cirru</option><option value="clojure">Clojure</option><option value="cobol">Cobol</option><option value="coffee">CoffeeScript</option><option value="coldfusion">ColdFusion</option><option value="csharp">C#</option><option value="css">CSS</option><option value="curly">Curly</option><option value="d">D</option><option value="dart">Dart</option><option value="diff">Diff</option><option value="dockerfile">Dockerfile</option><option value="dot">Dot</option><option value="drools">Drools</option><option value="dummy">Dummy</option><option value="dummysyntax">DummySyntax</option><option value="eiffel">Eiffel</option><option value="ejs">EJS</option><option value="elixir">Elixir</option><option value="elm">Elm</option><option value="erlang">Erlang</option><option value="forth">Forth</option><option value="fortran">Fortran</option><option value="ftl">FreeMarker</option><option value="gcode">Gcode</option><option value="gherkin">Gherkin</option><option value="gitignore">Gitignore</option><option value="glsl">Glsl</option><option value="gobstones">Gobstones</option><option value="golang">Go</option><option value="groovy">Groovy</option><option value="haml">HAML</option><option value="handlebars">Handlebars</option><option value="haskell">Haskell</option><option value="haskell_cabal">Haskell Cabal</option><option value="haxe">haXe</option><option value="hjson">Hjson</option><option value="html">HTML</option><option value="html_elixir">HTML (Elixir)</option><option value="html_ruby">HTML (Ruby)</option><option value="ini">INI</option><option value="io">Io</option><option value="jack">Jack</option><option value="jade">Jade</option><option value="java">Java</option><option value="javascript">JavaScript</option><option value="json">JSON</option><option value="jsoniq">JSONiq</option><option value="jsp">JSP</option><option value="jsx">JSX</option><option value="julia">Julia</option><option value="kotlin">Kotlin</option><option value="latex">LaTeX</option><option value="less">LESS</option><option value="liquid">Liquid</option><option value="lisp">Lisp</option><option value="livescript">LiveScript</option><option value="logiql">LogiQL</option><option value="lsl">LSL</option><option value="lua">Lua</option><option value="luapage">LuaPage</option><option value="lucene">Lucene</option><option value="makefile">Makefile</option><option value="markdown">Markdown</option><option value="mask">Mask</option><option value="matlab">MATLAB</option><option value="maze">Maze</option><option value="mel">MEL</option><option value="mushcode">MUSHCode</option><option value="mysql">MySQL</option><option value="nix">Nix</option><option value="nsis">NSIS</option><option value="objectivec">Objective-C</option><option value="ocaml">OCaml</option><option value="pascal">Pascal</option><option value="perl">Perl</option><option value="pgsql">pgSQL</option><option value="php">PHP</option><option value="powershell">Powershell</option><option value="praat">Praat</option><option value="prolog">Prolog</option><option value="properties">Properties</option><option value="protobuf">Protobuf</option><option value="python">Python</option><option value="r">R</option><option value="razor">Razor</option><option value="rdoc">RDoc</option><option value="rhtml">RHTML</option><option value="rst">RST</option><option value="ruby">Ruby</option><option value="rust">Rust</option><option value="sass">SASS</option><option value="scad">SCAD</option><option value="scala">Scala</option><option value="scheme">Scheme</option><option value="scss">SCSS</option><option value="sh">SH</option><option value="sjs">SJS</option><option value="smarty">Smarty</option><option value="snippets">snippets</option><option value="soy_template">Soy Template</option><option value="space">Space</option><option value="sql">SQL</option><option value="sqlserver">SQLServer</option><option value="stylus">Stylus</option><option value="svg">SVG</option><option value="swift">Swift</option><option value="tcl">Tcl</option><option value="tex">Tex</option><option value="text">Text</option><option value="textile">Textile</option><option value="toml">Toml</option><option value="tsx">TSX</option><option value="twig">Twig</option><option value="typescript">Typescript</option><option value="vala">Vala</option><option value="vbscript">VBScript</option><option value="velocity">Velocity</option><option value="verilog">Verilog</option><option value="vhdl">VHDL</option><option value="wollok">Wollok</option><option value="xml">XML</option><option value="xquery">XQuery</option><option value="yaml">YAML</option><option value="django">Django</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="red-underlay" class="esc"></div>
+
+<div id="message" class="esc">
+  <div class="data">Old Project Restored.</div>
+  <button class="close hol-button">CLOSE</button>
+</div>
+
+<div id="newFolder" class="esc">
+  <h3 class="new-head">New Folder</h3>
+  <form>
+    <label for="folderName">Folder Name</label>
+    <span class="folder-icon-before"></span><input type="text" id="folderName"/>
+    <input type="hidden" id="folderPath" value=""/>
+    <button class="hol-button">CREATE</button>
+  </form>
+  <button class="close hol-button">CLOSE</button>
+</div>
+
+<div id="newFile" class="esc">
+  <h3 class="new-head">New File</h3>
+  <form>
+    <label for="fileName">File Name</label>
+    <span class="file-icon-before"></span><input type="text" id="fileName"/>
+    <input type="hidden" id="filePath" value=""/>
+    <button class="hol-button">CREATE</button>
+  </form>
+  <button class="close hol-button">CLOSE</button>
+</div>
+
+<div id="deleteFolder" class="esc">
+
+  <h3 class="new-head">Delete <span id="deleteFolderName"></span></h3>
+  <div class="message">
+    Are you sure you want to delete this folder?
+  </div>
+
+  <center>
+    <button class="close-par hol-button">CANCEL</button>
+    <button id="deleteFolderBtn" class="hol-button">DELETE</button>
+  </center>
+
+</div>
+
+<div id="deleteFile" class="esc">
+
+  <h3 class="new-head">Delete <span id="deleteFileName"></span></h3>
+
+  <div class="message">
+    Are you sure you want to delete this file?
+  </div>
+
+  <center>
+    <button class="close-par hol-button">CANCEL</button>
+    <button id="deleteFileBtn" class="hol-button">DELETE</button>
+  </center>
+
+</div>
+
+<div id="renameFile" class="esc">
+  <h3 class="new-head">Rename File</h3>
+  <form>
+    <label for="renameInput">File Name</label>
+    <span class="file-icon-before"></span><input type="text" id="renameInput" />
+    <button class="hol-button">CREATE</button>
+  </form>
+  <button class="close hol-button">CLOSE</button>
+</div>
+
+<div id="goToLine" class="esc">
+  <h3 class="new-head">Go to line</h3>
+  <form>
+    <span class="hash-before">#</span><input type="text" id="toLineVal" placeholder="where-you-wanna-go"/>
+    <button class="hol-button">Go!</button>
+  </form>
+  <button class="hol-button close">CANCEL</button>
+</div>
+
+
+<div id="help" class="esc">
+
+  <h2 class="BigHead">Help</h2>
+  <h1 class="logo">en<span class="red">Code</span></h1>
+
+  <div id="help-child">
+
+    <div class="close-par help-close">X</div>
+
+    <div id="help-menu">
+      <h3 class="help-head">Help Menu</h3>
+      <div>
+        <div class="help-menu-act active" data-help="gs">Getting Started</div>
+        <div class="help-menu-act" data-help="sh">Shortcuts</div>
+        <div class="help-menu-act" data-help="ac">Acknowledgements</div>
+        <div class="help-menu-act" data-help="co">Contact</div>
+        <div class="help-menu-act" data-help="ab">About</div>
+      </div>
+    </div>
+
+    <div id="help-container">
+
+      <div class="help-content" data-help="gs">
+        <h3 class="help-head">Getting Started</h3>
+        <p class="help-article">
+          First of all, Welcome to enCode!<br>
+          Using this editor is pretty straight forward, similar to other ones. <br>
+          This editor project was made so that people who are using Netbooks or Chromebooks could better work on projects while on the go!
+          And also, for anyone with access to internet with a computer. <br>
+          <br>
+
+          With this app, you can download the file as is in <span class="highlight">its file format</span> or the entire Project as a <span class="highlight">zip file</span>,
+          or in <span class="highlight">JSON format</span>, so that the project can be loaded in here and you work on it from where you left of!
+          <br>
+          <br>
+
+          To see this again, just press <code>Alt + H</code>.
+          <br>
+          <br>
+
+        </p>
+      </div>
+
+      <div class="help-content" data-help="sh">
+        <h3 class="help-head">Shortcuts</h3>
+          <table id="shortcuts">
+            <tr>
+              <th id="keysH">Key(s)</th>
+              <th id="actionH">Action</th>
+            </tr>
+            <tr>
+              <td>Ctrl + S</td>
+              <td>Saves the current file.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Q</td>
+              <td>Closes the current tab.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + G</td>
+              <td>Opens GoTo Dialog to Go To a Line number</td>
+            </tr>
+            <tr>
+              <td>Esc</td>
+              <td>Hides the message or dialog box.</td>
+            </tr>
+            <tr>
+              <td>Esc + (n)</td>
+              <td>Opens the tab numbered n from the left.</td>
+            </tr>
+            <tr>
+              <td>Esc + Q</td>
+              <td>Opens the tab on the left of the active tab.</td>
+            </tr>
+            <tr>
+              <td>Esc + W</td>
+              <td>Opens the tab on the right of the active tab.</td>
+            </tr>
+            <tr>
+              <td>Alt + H</td>
+              <td>Opens/Closes the Help Center.</td>
+            </tr>
+            <tr>
+              <td>Alt + F</td>
+              <td>Toggle Fullscreen View.</td>
+            </tr>
+
+          </table>
+
+          <p class="help-article">
+            <!-- Work on this app is discontinued for now. -->
+          </p>
+      </div>
+
+      <div class="help-content" data-help="ac">
+        <h3 class="help-head">Acknowledgements</h3>
+        <p class="help-article">
+          If I were to make all the components of this app from scratch, this app wouldn't have happened. <br>
+          So, here all the components/plug-ins I've used for making this app thanks to the people who made it.
+          <ol>
+            <li>Ace Code Editor <a href="//ace.c9.io">http://ace.c9.io</a></li>
+            <li>FileSaver Plugin by Eli Grey (<a href="https://github.com/eligrey">@eligrey</a>). <a href="https://github.com/eligrey/FileSaver.js">GitHub Page</a></li>
+            <li>JSZip Plugin by <a href="https://github.com/Stuk">@Stuk</a>. <a href="https://github.com/Stuk/jszip">GitHub Page</a></li>
+          </ol>
+        </p>
+
+        <p class="help-article">
+          All other code was written by me, Vaibhav Shinde.<br><a href="//facebook.com/VaibKS">@fb</a><br><a href="//github.com/VaibKS">@GitHub</a>
+        </p>
+      </div>
+
+      <div class="help-content" data-help="co">
+
+        <h3 class="help-head">Contact</h3>
+
+        <p class="help-article">
+          If you have any problems with using this app or have any queries, you can contact me here : <br>
+          <a href="mailto:vaibhavkshinde20@gmail.com">vaibhavkshinde20@gmail.com</a>
+          <br>
+          Work on this app is discontinued for now.
+        </p>
+
+      </div>
+
+      <div class="help-content" data-help="ab">
+        <h3 class="help-head">About</h3>
+        <p class="help-article">
+          <!-- <marquee direction="up"> -->
+            ============================================<br>
+                          The First Build <br>
+            ============================================<br>
+            <br>
+            <br>
+            <br>
+            App made by Vaibhav Shinde <br>
+            with help from plugins/components mentioned in the Acknowledgements Section. <br>
+
+            <a href="changelog" id="cur-version">
+              v1.1
+            </a>
+
+            <p>
+              Work on this app is discontinued for now...
+            </p>
+        <!-- </marquee> -->
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="rtf/lib/libs.js"></script>
+  <script>
+    var editor = ace.edit("acor");
+    editor.setTheme("ace/theme/xcode");
+    editor.session.setMode("ace/mode/javascript");
+    editor.$blockScrolling = Infinity;
+  </script>
+  <script type="text/javascript" src="rtf/js/data.js" defer></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-89475700-2', 'auto');
+  ga('send', 'pageview');
+</script>
+</html>
